@@ -150,16 +150,40 @@
           <h3 class="my-4"><b>Aumente seus ganhos com a ajuda de um <span style="color: yellow; font-weight: bold; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">especialista</span> em <span style="color: green; font-weight: bold; text-decoration: underline;">Anúncios Online</span>.
           
           <!-- VSL -->
-          <div id="vid_63bb0c87635ac80009aeea8d" style="position:relative;width:100%;padding: 56.25% 0 0;"><img
-              id="thumb_63bb0c87635ac80009aeea8d"
-              src="https://images.converteai.net/08f7d2bf-f767-47af-9688-582055d7beb4/players/63bb0c87635ac80009aeea8d/thumbnail.jpg"
-              style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block;">
-            <div id="backdrop_63bb0c87635ac80009aeea8d"
-              style="position:absolute;top:0;width:100%;height:100%;-webkit-backdrop-filter:blur(5px);backdrop-filter:blur(5px);">
-            </div>
-          </div>
-          <script type="text/javascript"
-            id="scr_63bb0c87635ac80009aeea8d">var s = document.createElement("script"); s.src = "https://scripts.converteai.net/08f7d2bf-f767-47af-9688-582055d7beb4/players/63bb0c87635ac80009aeea8d/player.js", s.async = !0, document.head.appendChild(s);</script>
+<div id="youtube_video_placeholder" style="position:relative;width:100%;padding: 56.25% 0 0;">
+  <div id="youtube_player" style="position:absolute;top:0;left:0;width:100%;height:100%;"></div>
+</div>
+<script type="text/javascript">
+  // Código para carregar o vídeo do YouTube
+  var tag = document.createElement('script');
+  tag.src = "https://www.youtube.com/iframe_api";
+  var firstScriptTag = document.getElementsByTagName('script')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+  var player;
+  function onYouTubeIframeAPIReady() {
+    player = new YT.Player('youtube_player', {
+      height: '100%',
+      width: '100%',
+      videoId: 'xfg_CNOjZqY',
+      playerVars: {
+        autoplay: 0,
+        controls: 1,
+        rel: 0,
+        showinfo: 0
+      },
+      events: {
+        'onReady': onPlayerReady
+      }
+    });
+  }
+
+  function onPlayerReady(event) {
+    event.target.playVideo();
+  }
+</script>
+
+
 
           <!-- Botão 1 -->
           <div id="cta1" class="mt-4 d-none">
@@ -564,7 +588,7 @@
                 <table class="fb-comments-comment" id="14">
                   <tbody>
                     <tr>
-<td rowspan="3" class="fb-comments-comment-img"><img src="./assets/img/comentarios/p1.jpg"></td>
+<td rowspan="3" class="fb-comments-comment-img"><img src="./assets/img/comentarios/d1.jpg"></td>
                       <td>
                         <font class="fb-comments-comment-name">
                           <name>Luch Surf</name>
