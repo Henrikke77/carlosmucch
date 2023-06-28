@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>DESCONTO - Protocolo Seca Banha</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: opacity 1s ease, transform 1s ease;
+      font-family: 'Arial', sans-serif;
+      color: #ffffff;
+    }
+
+    .container.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    h1 {
+      font-size: 32px;
+      color: #ffffff;
+      margin-bottom: 20px;
+      animation: textAnimation 2s infinite;
+    }
+
+    p {
+      font-size: 18px;
+      color: #ffffff;
+      margin-bottom: 10px;
+    }
+
+    .button {
+      display: inline-block;
+      background-color: #ff0000;
+      color: #ffffff;
+      padding: 15px 30px;
+      border-radius: 5px;
+      font-size: 20px;
+      text-decoration: none;
+      transition: background-color 0.3s, transform 0.3s;
+    }
+
+    .button:hover {
+      background-color: #990000;
+      transform: translateY(-5px);
+    }
+
+    body {
+      background-color: #000000;
+      margin: 0;
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #000000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+      visibility: visible;
+      opacity: 1;
+      transition: opacity 0.5s ease-in-out;
+    }
+
+    .overlay-container {
+      background-color: #ff0000;
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    .overlay-text {
+      color: #ffffff;
+      font-size: 24px;
+      text-align: center;
+      animation: fadeIn 0.5s ease-in-out forwards;
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    @keyframes fadeOut {
+      0% { opacity: 1; }
+      100% { opacity: 0; }
+    }
+
+    @keyframes textAnimation {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+
+    .confetti {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background-color: #e20e82;
+      border-radius: 50%;
+      z-index: 9999;
+      display: none;
+      animation: confetti 3s ease-out infinite;
+    }
+
+    .confetti-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    @keyframes confetti {
+      0% { transform: translateY(0) rotate(0); }
+      100% { transform: translateY(200vh) rotate(360deg); }
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital@1&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Avenir&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Canela&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="overlay">
+    <div class="overlay-container">
+      <div class="overlay-text" id="loading-text">AGUARDE UM INSTANTE...</div>
+      <div class="overlay-text" id="countdown"></div>
+    </div>
+  </div>
+
+  <div class="container">
+    <h1 style="font-family: 'Cormorant', serif;">OFERTA ESPECIAL!</h1>
+    <p style="font-family: 'Avenir', sans-serif;">Não deixe essa oportunidade passar!</p>
+    <p style="font-family: 'Avenir', sans-serif;">Compreendo o quanto você está sofrendo e tenho a solução para mudar sua realidade, basta você querer...</p>
+    <h2 style="font-family: 'Cormorant', serif;">[ PROTOCOLO SECA BANHA ]</h2>
+    <p style="font-family: 'Avenir', sans-serif;">Apenas AGORA, você pode adquirir o PROTOCOLO SECA BANHA com <strong>50% de Desconto!</strong></p>
+    <p style="font-family: 'Avenir', sans-serif;">De R$147,00 por R$73,50</p>
+    <p style="font-family: 'Avenir', sans-serif;">Clique no botão ABAIXO e garanta seu acesso agora mesmo!</p>
+    <a href="https://pepper.com.br/checkout/index.html?p=46924&o=48634" class="button" style="font-family: 'Canela', serif;">Adquirir Agora com 50% de Desconto!</a>
+  </div>
+
+  <div class="confetti-container">
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      var overlay = document.querySelector(".overlay");
+      var overlayText = document.querySelectorAll(".overlay-text");
+      var container = document.querySelector(".container");
+      var confettiContainer = document.querySelector(".confetti-container");
+
+      overlayText[0].classList.add("fadeIn");
+
+      var countdownText = overlayText[1];
+      var countdown = 5;
+
+      function startCountdown() {
+        countdownText.textContent = countdown;
+        countdownText.classList.add("fadeIn");
+
+        var countdownInterval = setInterval(function() {
+          countdown--;
+          countdownText.textContent = countdown;
+          countdownText.classList.remove("fadeIn");
+          countdownText.classList.add("fadeOut");
+
+          if (countdown === 0) {
+            clearInterval(countdownInterval);
+            overlayText[0].classList.add("fadeOut");
+            overlayText[1].classList.add("fadeOut");
+            setTimeout(function() {
+              overlay.style.display = "none";
+              container.classList.add("show");
+              confettiContainer.style.display = "block";
+            }, 4000);
+          }
+        }, 1000);
+      }
+
+      setTimeout(startCountdown, 2000);
+
+      function createConfetti() {
+        var confetti = document.createElement("div");
+        confetti.classList.add("confetti");
+        confetti.style.left = Math.random() * 100 + "vw";
+        confetti.style.animationDelay = Math.random() * 3 + "s";
+        confettiContainer.appendChild(confetti);
+      }
+
+      for (var i = 0; i < 100; i++) {
+        createConfetti();
+      }
+    });
+  </script>
+</body>
+</html>
